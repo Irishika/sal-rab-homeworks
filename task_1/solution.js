@@ -1,88 +1,75 @@
-function calcShipping(sum, min, shipping) {
-    let productsSum = sum; // сумма в корзине
-    let freeShippingMinSum = min; // минимальная цена для бесплатной доставки
-    let shippingPrice = shipping; // стоимость доставки
+function addInCartMessage(title, price) {
+    let productName = title;
+    let productPrice = price;
 
-    // Задание №2.1. Рассчитать доставку
+    // Задание №1.1. Оповещение о добавлении в корзину
 
-    // создайте переменную shippingSum
-	let shippingSum;
-
-    // если productsSum равно 0,
-	if (productsSum == 0){
-    // то shippingSum присвоить значение 0
-		shippingSum = 0;
-	} 
-
-    // если productsSum Больше или равна freeShippingMinSum,
-	else if (productsSum >= freeShippingMinSum) {
-		
-    // то shippingSum присвоить значение 0
-		shippingSum = 0;
-	}
-
-    // если productsSum больше 0 и меньше freeShippingMinSum,
-	else if ((productsSum > 0) && (productsSum < freeShippingMinSum)) {
-    // то shippingSum присвоить значение shippingPrice
-		shippingSum = shippingPrice;
-	}
-    // Конец решения задания №2.1.
-
-    return shippingSum;
+    // создайте переменную message
+    let message;
+	
+    // присвойте переменной message значение переменной productName
+    message = productName;
+	
+    // добавьте в конец переменной message пробел
+    message = message + ' ';
+	
+    // добавьте в конец переменной message текст 'за'
+    message = message + 'за';
+	
+    // добавьте в конец переменной message пробел
+    message = message + ' ';
+	
+    // добавьте в конец переменной message значение переменной productPrice
+    message = message + productPrice;
+	
+    // добавьте в конец переменной message пробел
+    message = message + ' ';
+	
+    // добавьте в конец переменной message текст 'теперь в корзине!'
+    message = message + 'теперь в корзине!';
+	
+    // выведите переменную message в консоль
+    console.log(message);
+	
+    // Конец решения задания №1.1.	
+    return message;
 }
 
-function calcDiscount(sum, min, discount) {
-    let productsSum = sum; // сумма в корзине
-    let discountMinSum = min; // минимальная цена для скидки
-    let discountPart = discount; // величина скидки в процентах
+function addInCartCountChange(value) {
 
-    // Задание №2.2. Рассчитать скидку
+    // Задание №1.2. Увеличение количества в корзине
+    let oldValue = value;
 
-    // создайте переменную discountSum
-	let discountSum;
+    // создайте переменную newValue
+    let newValue;
+	
+    // присвойте ей значение oldValue
+    newValue = oldValue;
+	
+    // увеличьте значение newValue на 1
+    newValue ++;
 
-    // если productsSum больше или равно discountMinSum,
-	else if ((productsSum >= discountMinSum)) 
-    // то присвойте discountSum значение discountPart процентов от productsSum,
-     discountSum = discountPart процентов от productsSum
+    // Конец решения задания №1.2.
 
-    // иначе присвойте discountSum значение 0
-	discountSum = 0 
-
-    // Конец решения задания №2.2.
-
-    return discountSum;
+    return newValue;
 }
 
-function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shippingPrice}) {
-    let productsSum = sum;кая
-    let discountSum = calcDiscount(sum, discountMinSum, discountPart);
+function addInCartSumChange(sum, delta) {
+    let oldSum = sum;
+    let difference = delta;
 
-    // Задача №2.3. Рассчитать скидки и доставку в корзине
+    // Задание №1.3. Увеличение суммы в корзине
 
-    // создайте переменную totalSum
-	let totalSum;
-
-    // присвойте totalSum значение productsSum
-	totalSum = productsSum
+    // создайте переменную newSum и присвойте ей сумму oldSum и difference
+    let newSum = oldSum + difference;
 	
-    // уменьшите totalSum на discountSum
-	totalSum - discountSum
-
-    let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
-
-    // прибавьте к totalSum значение shippingSum
-	totalSum + shippingSum
-
-    // создайте переменную freeShipping
-	let freeShipping;
+    // создайте переменную newSumText и присвойте ей результат склеивания переменной newSum и текста ' ₽'
+    let newSumText = newSum + ' ₽';
 	
-    // запишите без использования if или любых других условий:
-    // если shippingSum равно нулю, то freeShipping должна быть равна true, иначе freeShipping должна быть равна false
-	freeShipping = 0
-	
+    // замените склеивание, используемое в newSum Text на шаблонную строку
+    newSumText = `${newSum} ₽`;
 
-    // Конец решения задачи №2.3.
+    // Конец решения задания №1.3.
 
-    return {discount: discountSum, freeShipping, shipping: shippingSum, total: totalSum};
+    return newSumText;
 }
