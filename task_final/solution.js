@@ -45,8 +45,8 @@ function sendRequest(name, phone, address, goods, sum) {
     };
     
     let data = {client: client, order: order, goods: g};
-
-    let jsonData = JSON.stringify(data);
+    let r={data: data};
+    let jsonData = JSON.stringify(value=r, space=2);
 
     return jsonData;
 }
